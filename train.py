@@ -1,27 +1,13 @@
 import pandas as pd
-from sklearn.linear_model import LinearRegression
+from sklearn.tree import DecisionTreeRegressor
 import pickle
 
-#Loading the data from the URL
+# Loading the data
 url = "https://raw.githubusercontent.com/leontoddjohnson/datasets/refs/heads/main/data/coffee_analysis.csv"
 df = pd.read_csv(url)
 
-# Select the features and target variable
-# Feature: 100g_USD (price per 100g in USD)
-# Target: Rating
-X = df[['100g_USD']]
-y = df['rating']
-
-# Train a linear regression model
-model = LinearRegression()
-model.fit(X, y)
-
-# Save the trained model as a pickle file
-with open("model_1.pickle", "wb") as f:
-    pickle.dump(model, f)
-
 # Encode the categorical feature 'roast' to numeric
-# Create a mapping dictionary for roast levels
+# Create a mapping (dictionary) for roast levels
 roast_map = {category: code for code, category in \
             enumerate(df['roast'].unique(), start=1)}
 
