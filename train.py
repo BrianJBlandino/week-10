@@ -24,4 +24,4 @@ model.fit(X, y)
 
 # Save the model and the category mapping as model_2.pickle
 with open("model_2.pickle", "wb") as f:
-    pickle.dump({'model': model, 'roast_map': roast_map}, f)
+    pickle.dump(model, f)
